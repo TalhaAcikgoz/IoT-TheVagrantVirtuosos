@@ -1,0 +1,31 @@
+Vagrant.configure("2") do | config |
+
+    config.vm.define "tacikgozS" do | server |
+        server.vm.box = "debian/bullseye64"
+        server.vm.hostname = "tacikgozS"
+        server.vm.network "private_network", ip: "192.168.56.110"
+
+        server.vm.provider "virtualBox" do |vb|
+            vb.name = "tacikgozS"
+            vb.memory = "1024"
+            vb.cpus = 1
+        end
+
+        server.vm.provision "shell", path: "setupServer.sh"
+    end
+
+    config.vm.define "tacikgozSW" do | worker |
+        worker.vm.box = "debian/bullseye64"
+        worker.vm.hostname = "tacikgozSW"
+        worker.vm.network "private_network", ip: "192.168.56.111"
+
+        worker.vm.provider "VirtualBox" do | vb |
+            vb.name = "tacikgozSW"
+            vb.memory = "1024"
+            vb.cpus = 1
+        end
+
+        worker.vm.provision "shell", path: "setupAgent.sh"
+    end
+end
+
