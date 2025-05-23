@@ -9,6 +9,10 @@ echo "[+] Updating system"
 apt-get update -y
 apt-get install -y curl docker.io 
 
+echo "[+] Restarting docker"
+systemctl restart docker
+sleep 10
+
 echo "[+] Installing K3s"
 curl -sfL https://get.k3s.io | sh -
 
