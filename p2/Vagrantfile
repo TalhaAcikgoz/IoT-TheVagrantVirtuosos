@@ -5,9 +5,9 @@ Vagrant.configure("2") do | config |
         server.vm.hostname = "tacikgozS"
         server.vm.network "private_network", ip: "192.168.56.110"
 
-        server.vm.provider "virtualBox" do |vb|
+        server.vm.provider "virtualbox" do |vb|
             vb.name = "tacikgozS"
-            vb.memory = "2048"
+            vb.memory = "4096"
             vb.cpus = 2
         end
         server.vm.provision "shell", path: "scripts/provision.sh"

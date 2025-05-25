@@ -1,31 +1,31 @@
 Vagrant.configure("2") do | config |
 
-    config.vm.define "tacikgozS" do | server |
+    config.vm.define "suyildizS" do | server |
         server.vm.box = "debian/bullseye64"
-        server.vm.hostname = "tacikgozS"
+        server.vm.hostname = "suyildizS"
         server.vm.network "private_network", ip: "192.168.56.110"
 
-        server.vm.provider "virtualBox" do |vb|
-            vb.name = "tacikgozS"
-            vb.memory = "1024"
+        server.vm.provider "virtualbox" do |vb|
+            vb.name = "suyildizS"
+            vb.memory = "1836"
             vb.cpus = 1
         end
 
-        server.vm.provision "shell", path: "setupServer.sh"
+        server.vm.provision "shell", path: "scripts/setupServer.sh"
     end
 
-    config.vm.define "tacikgozSW" do | worker |
+    config.vm.define "suyildizSW" do | worker |
         worker.vm.box = "debian/bullseye64"
-        worker.vm.hostname = "tacikgozSW"
+        worker.vm.hostname = "suyildizSW"
         worker.vm.network "private_network", ip: "192.168.56.111"
 
-        worker.vm.provider "VirtualBox" do | vb |
-            vb.name = "tacikgozSW"
-            vb.memory = "1024"
+        worker.vm.provider "virtualbox" do | vb |
+            vb.name = "suyildizSW"
+            vb.memory = "1836"
             vb.cpus = 1
         end
 
-        worker.vm.provision "shell", path: "setupAgent.sh"
+        worker.vm.provision "shell", path: "scripts/setupAgent.sh"
     end
 end
 

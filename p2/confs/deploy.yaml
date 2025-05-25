@@ -15,9 +15,17 @@ spec:
     spec:
       containers:
       - name: app1
-        image: app1-img
+        image: nginx:alpine
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: app1htmlv
+          mountPath: /usr/share/nginx/html/index.html
+          subPath: app1.html
+      volumes:
+      - name: app1htmlv
+        configMap:
+          name: app1-html
 ---
 apiVersion: v1
 kind: Service
@@ -49,9 +57,17 @@ spec:
     spec:
       containers:
       - name: app2
-        image: app2-img
+        image: nginx:alpine
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: app2htmlv
+          mountPath: /usr/share/nginx/html/index.html
+          subPath: app2.html
+      volumes:
+      - name: app2htmlv
+        configMap:
+          name: app2-html
 ---
 apiVersion: v1
 kind: Service
@@ -83,9 +99,17 @@ spec:
     spec:
       containers:
       - name: app3
-        image: app3-img
+        image: nginx:alpine
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: app3htmlv
+          mountPath: /usr/share/nginx/html/index.html
+          subPath: app3.html
+      volumes:
+      - name: app3htmlv
+        configMap:
+          name: app3-html
 ---
 apiVersion: v1
 kind: Service
