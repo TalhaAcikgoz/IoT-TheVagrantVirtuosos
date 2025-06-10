@@ -1,0 +1,15 @@
+# p3/confs/argocd-server-ingress.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: argocd-server-nodeport
+  namespace: argocd
+spec:
+  type: NodePort
+  selector:
+    app.kubernetes.io/name: argocd-server
+  ports:
+    - port: 80
+      targetPort: 8080
+      nodePort: 30080
+      protocol: TCP
