@@ -2,7 +2,7 @@
 set -e
 
 echo "==> Paket listeleri güncelleniyor..."
-# sudo apt-get update -y
+sudo apt-get update -y
 
 echo "==> Gerekli paketler kuruluyor..."
 sudo apt-get install -y \
@@ -104,4 +104,14 @@ kubectl get nodes
 
 echo "Kurulum tamamlandı. Debian ortamında k3d + ArgoCD hazır."
 
+echo "argocd namespace olusturuluyor"
+kubectl create namespace argocd
+
+echo "argocd install yaml uygulaniyor."
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+echo "ingress yaml uygulaniyor."
+kubectl apply -f ../confs/argocd-server-ingress.yaml
+
+echo "app-deployment ve argocd application yaml uygulaniyor."
+kubectl apply -f ../confs/app-deployment.yaml
