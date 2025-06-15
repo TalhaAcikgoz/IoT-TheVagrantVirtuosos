@@ -16,7 +16,7 @@ sudo apt-get install -y \
   apt-transport-https
 
 ################################################################################
-# Docker kurulumu
+# Docker instalation
 ################################################################################
 if ! command -v docker >/dev/null 2>&1; then
   echo "==> Docker kurulumu başlıyor..."
@@ -42,7 +42,7 @@ docker pull argoproj/argocd
 docker pull ghcr.io/dexidp/dex
 
 ################################################################################
-# kubectl kurulumu
+# kubectl instalation
 ################################################################################
 if ! command -v kubectl >/dev/null 2>&1; then
   echo "==> kubectl indiriliyor..."
@@ -54,7 +54,7 @@ else
 fi
 
 ################################################################################
-# k3d kurulumu
+# k3d instalation
 ################################################################################
 if ! command -v k3d >/dev/null 2>&1; then
   echo "==> k3d kuruluyor..."
@@ -64,7 +64,7 @@ else
 fi
 
 ################################################################################
-# ArgoCD CLI kurulumu
+# ArgoCD CLI instalation
 ################################################################################
 if ! command -v argocd >/dev/null 2>&1; then
   echo "==> Argo CD CLI indiriliyor..."
@@ -77,7 +77,7 @@ else
 fi
 
 ################################################################################
-# K3d cluster oluşturma
+# K3d cluster instalation
 ################################################################################
 CLUSTER_NAME="p3-cluster"
 if k3d cluster list | grep -q "$CLUSTER_NAME"; then
