@@ -115,3 +115,7 @@ kubectl apply -f ../confs/argocd-server-ingress.yaml
 
 echo "app-deployment ve argocd application yaml uygulaniyor."
 kubectl apply -f ../confs/app-deployment.yaml
+
+echo "Uygulamaya baglanilabilmesi icin port yonlendirmesi yapiliyor."
+kubectl -n dev port-forward svc/playground-svc 8888:80
+
