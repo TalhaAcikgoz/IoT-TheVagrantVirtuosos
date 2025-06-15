@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: playground
-          image: wil42/playground:v1     # İlk versiyon v1
+          image: wil42/playground:v1     # first version v1
           ports:
             - containerPort: 8888
 ---
@@ -49,10 +49,10 @@ spec:
   source:
     repoURL: 'https://github.com/TalhaAcikgoz/argoXD'  # Git repo URL
     targetRevision: HEAD
-    path: 'dev/'  # Git repo içerisindeki dosya yolu
+    path: 'dev/'  # file path in git repo
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: dev  # Kaynakları deploy etmek istediğiniz namespace
+    namespace: dev  # the namespace that we want to deploy the sources/apps
   syncPolicy:
     automated:
       prune: true
