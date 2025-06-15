@@ -2,8 +2,8 @@
 
 set -e
 set -x
-# set -e: hata olursa durur
-# set -x: her satiri ekrana basar
+# set -e: stops when an error occures
+# set -x: print the all lines
 
 echo "[+] Updating system"
 apt-get update -y
